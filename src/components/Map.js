@@ -14,7 +14,7 @@ let DefaultIcon = Leaflet.icon({
     shadowUrl: iconShadow
 });
 Leaflet.Marker.prototype.options.icon = DefaultIcon;
-const position = [37.774929,-122.419418]
+const position = [51.7519,-1.2578]
 
 class Map extends React.Component {
 
@@ -25,7 +25,7 @@ class Map extends React.Component {
             this.props.markers ?
 
                 <>
-                    <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+                    <MapContainer center={position} zoom={8} scrollWheelZoom={false}>
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

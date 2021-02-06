@@ -31,7 +31,7 @@ class App extends React.Component {
         var _t = this;
         base('alldata').select({
             // Selecting the first 3 records in Grid view:
-            maxRecords: 2000,
+            maxRecords: 1000,
             view: "Grid view"
         }).eachPage(function page(records, fetchNextPage) {
             // This function (`page`) will get called for each page of records.
