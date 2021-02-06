@@ -13,7 +13,7 @@ let DefaultIcon = Leaflet.icon({
     shadowUrl: iconShadow
 });
 Leaflet.Marker.prototype.options.icon = DefaultIcon;
-const position = [51.505, -0.09]
+const position = [37.774929,-122.419418]
 
 class Map extends React.Component {
 
