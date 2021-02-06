@@ -11,17 +11,7 @@ const APP_TOKEN='2Ln4McSNi6CXpPglXM6q9wBlS'
 class App extends React.Component {
 
     state = {
-        markers: [
-            {
-                id: '123',
-                latlng: [37.774929,-122.419418],
-                name: 'nik Roberts',
-                url: 'https://www.wikipedia.org'
-            },
-
-
-
-        ],
+        markers: null
     }
 
 
@@ -41,7 +31,7 @@ class App extends React.Component {
         var _t = this;
         base('alldata').select({
             // Selecting the first 3 records in Grid view:
-            maxRecords: 5000,
+            maxRecords: 2000,
             view: "Grid view"
         }).eachPage(function page(records, fetchNextPage) {
             // This function (`page`) will get called for each page of records.
@@ -54,7 +44,7 @@ class App extends React.Component {
                         name: record.get('city'),
                         url: 'https://www.wikipedia.org/'
                     })
-                console.log('Retrieved', record.get('lat'));
+                // console.log('Retrieved', record.get('lat'));
             });
 
             // To fetch the next page of records, call `fetchNextPage`.
