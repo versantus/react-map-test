@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css'
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+import Airtable from 'airtable'
 
 let DefaultIcon = Leaflet.icon({
     ...Leaflet.Icon.Default.prototype.options,
@@ -21,7 +22,7 @@ class Map extends React.Component {
     render = () => {
 
         return (
-            this.props.incidents ?
+            this.props.markers ?
 
                 <>
                     <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
@@ -30,18 +31,20 @@ class Map extends React.Component {
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
                         {
-                            this.props.incidents.map(incident => {
-                                const point = [incident['point']['coordinates'][1], incident['point']['coordinates'][0]]
-
+                            this.props.markers.map(marker => {
+                                console.log(marker);
+                                const point = [marker['latlng'][0], marker['latlng'][1]]
+                                console.log(point);
 
                                 return (
-                                    <Marker position={point} key={incident['incident_number']}>
+                                    <Marker position={point} key={marker['id']}>
                                         <Popup>
-                                            <span>ADDRESS: {incident['address']}, {incident['city']} - {incident['zip_code']}
-                                            <a href="https://www.wikipedia.org/">Link</a>
+                                            <span>NAME: {marker['name']}
+                                            <br/>
+                                            <a href={marker['url'] + "/wiki/" + marker['name']}>Wikipedia page</a>
                                             </span>
                                             <br/>
-                                            <span>BATTALION: {incident['battalion']}</span><br/>
+                                            <span>BATTALION: {marker['battalion']}</span><br/>
                                         </Popup>
                                     </Marker>
                                 )
