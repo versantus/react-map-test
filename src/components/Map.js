@@ -7,6 +7,9 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 import Airtable from 'airtable'
 
+import {
+    useParams
+} from 'react-router-dom'
 let DefaultIcon = Leaflet.icon({
     ...Leaflet.Icon.Default.prototype.options,
     iconUrl: icon,
@@ -18,9 +21,10 @@ const position = [51.7519,-1.2578]
 
 class Map extends React.Component {
 
-
     render = () => {
 
+        console.log("Map markers = ")
+        console.log(this.props.markers)
         return (
             this.props.markers ?
 
@@ -41,11 +45,9 @@ class Map extends React.Component {
                                         <Popup>
                                             <span>NAME: {marker['name']}
                                             <br/>
-                                            <a href={marker['url'] + "/wiki/" + marker['name']}>Wikipedia page</a>
+                                            <a href={"/record/" + marker['id']}>Wikipedia page</a>
                                             </span>
-                                            <br/>
-                                            <span>BATTALION: {marker['battalion']}</span><br/>
-                                        </Popup>
+                                            </Popup>
                                     </Marker>
                                 )
                             })
