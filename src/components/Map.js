@@ -37,7 +37,9 @@ class Map extends React.Component {
                                 return (
                                     <Marker position={point} key={incident['incident_number']}>
                                         <Popup>
-                                            <span>ADDRESS: {incident['address']}, {incident['city']} - {incident['zip_code']}</span>
+                                            <span>ADDRESS: {incident['address']}, {incident['city']} - {incident['zip_code']}
+                                            <a href="https://www.wikipedia.org/">Link</a>
+                                            </span>
                                             <br/>
                                             <span>BATTALION: {incident['battalion']}</span><br/>
                                         </Popup>
